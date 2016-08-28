@@ -1,0 +1,3 @@
+# Newline format in Windows(CR-LF)
+*.bat text eol=crlf
+*.cmd text eol=crlf
