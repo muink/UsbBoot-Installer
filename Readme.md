@@ -2,7 +2,10 @@
 =================
 This program can add UsbBoot suporrt for Windows 7/8/10
 
-### How To Use:
+### Download:
+Go to [release page](https://github.com/muink/UsbBoot-Installer/releases)
+
+### Usage:
  1. Run `launcher.cmd`
  2. Follow the prompts to complete the operation
  3. Reboot the installed target system
