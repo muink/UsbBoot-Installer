@@ -97,6 +97,26 @@ echo.   set /p ny=Are you sure? [y/n]
 echo.^)
 echo.if "%%ny%%"=="y" "%%windir%%\System32\sysprep\sysprep.exe" /oobe /generalize /shutdown
 )>"%install_volume%:\Users\Public\Desktop\run_sysprep.bat"
+) else (
+rem Deploy XP sysprep program
+copy /b /y DEPLOY-CN-SP3.CAB "%install_volume%:\DEPLOY.CAB">nul
+attrib +s +h "%install_volume%:\DEPLOY.CAB" 2>nul
+rem Make XP sysprep script
+(echo.@echo off
+echo.set "ny=n"
+echo.set /p ny=Start Sysprep? [y/n]
+echo.echo.
+echo.if "%%ny%%"=="y" (
+echo.   set "ny=n"
+echo.   set /p ny=Are you sure? [y/n]
+echo.^)
+echo.if "%%ny%%"=="y" (
+echo.   cd /d C:\
+echo.   md Sysprep 2^>nul
+echo.   expand -f:* DEPLOY.CAB Sysprep^>nul
+echo.   "C:\sysprep\sysprep.exe" /quiet /pnp /noreboot /mini
+echo.^)
+)>"%install_volume%:\run_sysprep.bat"
 )
 ::install server program
 copy /y UsbBootWatcher.conf "%install_volume%:\Windows\System32">nul
