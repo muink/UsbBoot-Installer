@@ -157,6 +157,11 @@ if %version% lss 51 (
       ) else (
          if %version% leq 63 (
             set "version=win8"
+         ) else (
+            if %version% gtr 63 (
+               set "version=win11"
+               set "newlb=1"
+            )
          )
       )
    )
@@ -165,6 +170,7 @@ if %version% lss 51 (
 cls
 echo.&echo.Identified system is "%name%" edition is "%edition%"&echo.
 if defined oldlb color CF&echo.Warning: This system is too old may not support this feature.&echo.
+if defined newlb color CF&echo.Warning: Not support this system now.&goto END
 set "ny=n"
 set /p ny=Whether continue? [y/n]
 color 07
