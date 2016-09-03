@@ -1,8 +1,12 @@
 <img src="https://raw.githubusercontent.com/muink/UsbBoot-Installer/master/Drive-USB-icon.png" width = "48" height = "48" alt="UsbBoot-Installer" align=center />UsbBoot-Installer
 =================
-This program can add UsbBoot suporrt for Windows 7/8/10
+This program can add UsbBoot suporrt for Windows 7/8/10  
+To allow the system booting from usb device
 
-### How To Use:
+### Download:
+Go to [release page](https://github.com/muink/UsbBoot-Installer/releases)
+
+### Usage:
  1. Run `launcher.cmd`
  2. Follow the prompts to complete the operation
  3. Reboot the installed target system
