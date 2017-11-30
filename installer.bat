@@ -201,6 +201,8 @@ call:[EnableAHCI]
 call:[Install20]
 call:[Install30]
 call:[InstallIntel30]
+call:[InstallAMD30]
+call:[InstallASMedia30]
 if not "%install_mode%"=="1" reg unload %reg_system_path%
 endlocal
 goto :eof
@@ -247,9 +249,21 @@ call:[DeviceSet] "USBHUB3,USBXHCI"
 goto :eof
 
 
-::Definition intel usb3.0 drive (if have)
+::Definition Intel usb3.0 drive (if have)
 :[InstallIntel30]
 call:[DeviceSet] "iusb3hub,iusb3xhc"
+goto :eof
+
+
+::Definition AMD usb3.0/3.1 drive (if have)
+:[InstallAMD30]
+call:[DeviceSet] "amdhub3,amdxhci,amdhub31,amdxhc31"
+goto :eof
+
+
+::Definition ASMedia usb3.0 drive (if have)
+:[InstallASMedia30]
+call:[DeviceSet] "asmthub3,asmtxhci"
 goto :eof
 
 
