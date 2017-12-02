@@ -73,9 +73,8 @@ call:[Install] %install_version%
 if not "%install_version%"=="winxp" (
 rem Force detection HAL at boot
 (echo.@echo off
-echo.%%~1 %%~2
-echo.ver^|findstr "^5\."^>nul^&^&goto :adt
-echo.mshta vbscript:createobject("shell.application"^).shellexecute("%%~s0","goto adt","","runas",1^)(window.close^)^&goto :eof
+echo.%%~1 ver^|findstr "5\."^>nul^&^&goto :adt
+echo.%%~1 mshta vbscript:createobject("shell.application"^).shellexecute("%%~s0","rem","","runas",1^)(window.close^)^&goto :eof
 echo.
 echo.:adt
 echo.bcdedit /set {current} detecthal on^>nul
@@ -83,9 +82,8 @@ echo.del /f /q "%%~f0"^>nul
 )>"%install_volume%:\ProgramData\Microsoft\Windows\Start Menu\Programs\Startup\force_detection_hal.bat"
 rem Make sysprep script
 (echo.@echo off
-echo.%%~1 %%~2
-echo.ver^|findstr "^5\."^>nul^&^&goto :adt
-echo.mshta vbscript:createobject("shell.application"^).shellexecute("%%~s0","goto adt","","runas",1^)(window.close^)^&goto :eof
+echo.%%~1 ver^|findstr "5\."^>nul^&^&goto :adt
+echo.%%~1 mshta vbscript:createobject("shell.application"^).shellexecute("%%~s0","rem","","runas",1^)(window.close^)^&goto :eof
 echo.
 echo.:adt
 echo.set "ny=n"
