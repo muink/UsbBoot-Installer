@@ -31,7 +31,7 @@ if not "%install_mode%"=="0" (
 
 :menu_1
 cls
-set "install_volume=C"
+set "install_volume=%SystemDrive:~0,1%"
 ::checksystem
 set install_version=
 call:[CheckSystem] install_version
@@ -124,7 +124,7 @@ if "%install_mode%"=="1" (
    )
    if not exist "!softfile!" (
       for /f %%i in ("8") do endlocal&set "%~2=%%i"&goto :eof
-   ) else reg load !softpath! "!softfile!"
+   ) else reg load !softpath! "!softfile!">nul
 )
 call:[VerifySystemVersion] vers %softpath% ProductName EditionID CurrentVersion
 for /f "delims=" %%i in ("%vers%") do endlocal&set "%~1=%%i"
@@ -181,7 +181,7 @@ goto :eof
 
 :[CatNTInfo]
 setlocal enabledelayedexpansion
-for /f "tokens=2* delims= " %%i in ('reg query "%~1\Microsoft\Windows NT\CurrentVersion" /v %~2 2^>nul^|findstr /i "\< *%~2 *REG_[a-z,A-Z]*"') do set "%~3=%%j"
+for /f "tokens=2* delims= " %%i in ('reg query "%~1\Microsoft\Windows NT\CurrentVersion" /v %~2 2^>nul^|findstr /i /c:" %~2 "') do set "%~3=%%j"
 if not defined %~3 set "%~3=NULL"
 for /f "delims=" %%i in ("!%~3!") do endlocal&set "%~3=%%i"
 goto :eof
