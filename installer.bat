@@ -255,7 +255,7 @@ goto :eof
 
 ::Definition AMD usb3.0/3.1 drive (if have)
 :[InstallAMD30]
-call:[DeviceSet] "amdhub3,amdxhci,amdhub31,amdxhc31"
+call:[DeviceSet] "amdhub3,amdxhci,amdhub30,amdxhc,amdhub31,amdxhc31"
 goto :eof
 
 
