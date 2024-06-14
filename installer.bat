@@ -243,13 +243,13 @@ goto :eof
 
 ::Definition native usb3.0 drive (if have)
 :[Install30]
-call:[DeviceSet] "USBHUB3,USBXHCI"
+call:[DeviceSet] "UASPStor,UCX01000,USBHUB3,USBHUB3,USBXHCI"
 goto :eof
 
 
 ::Definition Intel usb3.0 drive (if have)
 :[InstallIntel30]
-call:[DeviceSet] "iusb3hub,iusb3xhc"
+call:[DeviceSet] "iusb3hub,usbhub3,iusb3xhc"
 goto :eof
 
 
